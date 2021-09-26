@@ -12,6 +12,14 @@ class ShortUrlsController < ApplicationController
   end
 
   def create
+    @short_url = ShortUrl.new(short_url_params)
+    if @short_url.valid? 
+      @short_url.save!
+      UpdateTitleJob.perform_later(@short_url.id)
+      render json: { short_code: @short_url.short_code }
+    else
+      render json: { errors: "Full url is not a valid url" }
+    end
   end
 
   def show

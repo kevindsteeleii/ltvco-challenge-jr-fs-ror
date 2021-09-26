@@ -24,11 +24,16 @@ class ShortUrl < ApplicationRecord
   def validate_full_url
     # if blank, add to errors
     errors.add(:full_url, "can't be blank") if self.full_url.blank?
-    
+
     # create a regex that checks for an alphanumeric pattern ends with anywhere from 1-5 characters and ignores both capitalization and whitespace patterns
     # compare regex with full_url, return true if it matches, otherwise it's false
     url_regexp = /[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix
     valid = self.full_url =~ url_regexp ? true : false
+
+    # errors out if "invalid" full_url
+    unless valid 
+      errors.add(:full_url, "is not a valid url")
+    end
   end
 
   def self.decoder_hash 

@@ -7,6 +7,11 @@ class ShortUrl < ApplicationRecord
 
   validate :validate_full_url
 
+  def public_attributes 
+    attributes = self.attributes.slice(:full_url, :title, :click_count)
+    attributes[:short_code] = short_code
+  end
+
   def short_code
     if self.id.present? 
       converted_id_array = self.id.digits(62) # convert id from base10 to base62

@@ -15,11 +15,6 @@ class ShortUrl < ApplicationRecord
   end
 
   def update_title!
-    # 0. require 'open-uri' & 'nokogiri'
-    # 1. use open-uri to open full_url like a file
-    # 2. w/ Nokogiri parse html document opened by open-uri and access value of <title> tag
-    # 3. assign instance variable title to title accessed by the combination of open-uri and nokogiri
-    # 4. update :title attribute
     title = Nokogiri::HTML(URI.open(self.full_url)).title
     self.update!(title: title)
   end

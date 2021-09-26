@@ -38,7 +38,7 @@ Since there are a total of 62 alphanumeric characters including capital and lowe
 1. converted the unique base10 id of a given short_url into a base62 number, I used **#digits** which outputs a converted number in a given base to an arrray of each converted digit in ascending order. Example below:
 ```ruby
     # convert 8 (base10) to base2 array in ascending order
-    base2_convert = 8.digits(2) # 10 in binary is 1000
+    base2_convert = 8.digits(2) # 8 in binary is 1000
     binary8_desc_arr = 1000.to_s.split("").map(&:to_i) # converts 1000 to string to array of strings and then maps each element back to an integer
 
     # doesn't raise error b/c they're equal, returns nil

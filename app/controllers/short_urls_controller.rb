@@ -17,4 +17,10 @@ class ShortUrlsController < ApplicationController
   def show
   end
 
+  private
+
+  def short_url_params 
+    params.permit(:full_url, :id)
+  end
+
 end

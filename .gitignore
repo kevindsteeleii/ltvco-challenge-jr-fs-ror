@@ -105,4 +105,8 @@ build-iPhoneSimulator/
 .history
 .ionide
 
+### Remove logs ###
+/log/
+/log/*
+
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,macos,ruby

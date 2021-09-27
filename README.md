@@ -45,10 +45,10 @@ Since there are a total of 62 alphanumeric characters including capital and lowe
     raise "array [1,0,0,0] not equal to binary8_desc_arr" unless [1,0,0,0] == binary8_desc_arr
 
     # doesn't raise error b/c they're equal, returns nil
-    raise "base2_convert is equal to binary8_desc_arr" unless [0,0,0,1] === base2_convert
+    raise "base2_convert is equal to binary8_desc_arr" unless [0,0,0,1] == base2_convert
 
     # doesn't raise error b/c they're not equal, returns nil
     raise "base2_convert is equal to binary8_desc_arr" unless binary8_desc_arr != base2_convert
 ```
-2. I then mapped each base62 digit to it's value in CHARACTERS based off of matching the index with the base62 digit (ex: 20 -> "k")
-3. because the array was in ascending order (ex: 10.digits(10) -> [0, 1] not [1, 0]), I had to reverse it before joining it into a string, I also had to reverse the shortened url to decode it back to it's id as well
+2. I then mapped each base62 digit to its value in CHARACTERS based off of matching the index with the base62 digit (ex: 20 -> "k")
+3. because the array was in ascending order (ex: 10.digits(10) -> [0, 1] not [1, 0]), I had to reverse it before joining it into a string, I also had to reverse the shortened url to decode it back to its id as well

@@ -1,7 +1,6 @@
 import React from 'react'
 
 const ShortUrlAnchor = ({baseUrl, shortUrl, text}) => {
-
   const fullUrl = baseUrl + shortUrl;
   text = text || fullUrl;
 

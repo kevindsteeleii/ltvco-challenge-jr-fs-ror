@@ -18,6 +18,7 @@ export default function Home() {
 
   return (
     <div>
+      <br/>
       { shortUrls.length > 0 && 
         shortUrls.map((shortUrl, idx) => <li style={{listStyle: "none"}} key={idx}><ShortUrlAnchor baseUrl={BASE_URL} shortUrl={shortUrl}/></li>) 
       }

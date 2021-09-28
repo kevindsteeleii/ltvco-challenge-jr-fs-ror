@@ -19,6 +19,10 @@
 
     docker-compose up
 
+# Install/Update Gems
+
+    docker-compose run short-app bundle install
+
 # Adding a URL
 
     curl -X POST -d "full_url=https://google.com" http://localhost:3000/short_urls.json

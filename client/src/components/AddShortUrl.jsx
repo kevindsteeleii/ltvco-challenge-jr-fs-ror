@@ -11,17 +11,29 @@ export default function AddShortUrl() {
   const [shortUrl, setshortUrl] = useState(null);
   const [newUrl, setNewUrl] = useState("");
   const [loaded, setLoaded] = useState(false);
-  const [reset, setReset] = useState(false);
 
   const handleChangedUrl = (ev) => {
     setNewUrl(ev.target.value);
+  }
+
+  const handleFocus = (ev) => {
+    ev.preventDefault();
+    setIsValid(null);
   }
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
     console.log(newUrl);
     
-    setIsValid(valid => URL_REGEXP.test(newUrl));
+    setIsValid(valid => {
+
+      const validUrl = URL_REGEXP.test(newUrl);
+      if(!validUrl) {
+        setNewUrl("");
+      }
+
+      return validUrl;
+    });
   }
 
   useEffect(() => {
@@ -41,12 +53,12 @@ export default function AddShortUrl() {
       <form onSubmit={handleSubmit} >
         <br/>
         <label htmlFor="text-url">Input Url to shorten here:</label><br/>
-        <input type="text" name="text-url" value={newUrl} onChange={handleChangedUrl} id="text-url"/>
+        <input type="text" name="text-url" value={newUrl} onFocus={handleFocus} onChange={handleChangedUrl} id="text-url"/>
         <input type="submit" value="Submit"/>
       </form>
     }
 
-    { isValid === false && <p>Invalid URL entered. Please try again.</p> }
+    { isValid === false && <p style={{ color: 'red' }}>Invalid URL entered. Please try again.</p> }
     { isValid && loaded && <ShortUrlAnchor baseUrl={BASE_URL} shortUrl={shortUrl}/> }
   </div>);
 }

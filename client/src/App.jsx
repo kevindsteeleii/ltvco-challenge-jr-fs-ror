@@ -1,18 +1,19 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import Home from "./components/Home.jsx";
 import AddShortUrl from './components/AddShortUrl.jsx';
 import Navigation from './components/Navigation.jsx';
 import ErrorBoundary from './components/ErrorBoundary.jsx';
 import { Router } from "@reach/router";
-import './styles/styles.css';
 
 const App = () => {
+  const [refreshAddPath, setRefreshAddPath] = useState(true);
+
   return (<Fragment>
     <ErrorBoundary>
-        <Navigation/>
+        <Navigation resetAddPath={setRefreshAddPath}/>
 
         <Router>
-          <AddShortUrl path="/short_urls" />
+          { refreshAddPath && <AddShortUrl path="/short_urls" /> }
           <Home path="/" />
         </Router>
     </ErrorBoundary>

@@ -1,8 +1,13 @@
 import React, { Fragment } from 'react';
+import ErrorBoundary from './components/ErrorBoundary.jsx';
+import Navigation from './components/Navigation.jsx';
 
 const App = () => {
   return (<Fragment>
-    Working...
+    <ErrorBoundary>
+        <Navigation/>
+
+    </ErrorBoundary>
   </Fragment>);
 };
 

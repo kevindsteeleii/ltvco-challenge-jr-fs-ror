@@ -8,8 +8,5 @@
     "@rails/webpacker": "^5.2.1",
     "turbolinks": "^5.2.0"
   },
-  "version": "0.1.0",
-  "devDependencies": {
-    "webpack-dev-server": "^3.8.1"
-  }
+  "version": "0.1.0"
 }
